@@ -116,6 +116,7 @@ button{font-family:inherit}
 .header-actions{display:flex;align-items:center;gap:10px}
 .header-actions .btn{padding:12px 18px;font-size:14px}
 .header-actions .btn-outline{display:none}
+.header-social{display:none;align-items:center;gap:8px;margin-right:4px}
 .menu-btn{
   display:inline-flex;align-items:center;justify-content:center;
   width:42px;height:42px;border-radius:10px;border:1px solid var(--card-border);
@@ -124,6 +125,7 @@ button{font-family:inherit}
 @media(min-width:960px){
   .main-nav{display:flex}
   .header-actions .btn-outline{display:inline-flex}
+  .header-social{display:flex}
   .menu-btn{display:none}
 }
 
