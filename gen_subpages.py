@@ -31,6 +31,10 @@ HEADER_TMPL = """<header class="site-header">
       <a href="/#regiao">Contato</a>
     </nav>
     <div class="header-actions">
+      <div class="header-social">
+        <a class="social-btn" href="https://www.instagram.com/dt28_cambioautomaticos/" aria-label="Instagram da DT28" target="_blank" rel="noopener"><svg class="icon-sm icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a class="social-btn" href="https://www.facebook.com/104496185844160" aria-label="Facebook da DT28" target="_blank" rel="noopener"><svg class="icon-sm icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+      </div>
       <a class="btn btn-outline" href="/#regiao">Como chegar</a>
       <a class="btn btn-primary" href="{wa_geral}">
         <svg class="icon icon-sm" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp
@@ -57,6 +61,10 @@ HEADER_TMPL = """<header class="site-header">
     <a href="/#regiao">Contato</a>
     <a href="/#faq">Dúvidas frequentes</a>
   </nav>
+  <div class="social-row" style="margin-top:20px">
+    <a class="social-btn" href="https://www.instagram.com/dt28_cambioautomaticos/" aria-label="Instagram da DT28" target="_blank" rel="noopener"><svg class="icon-sm icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+    <a class="social-btn" href="https://www.facebook.com/104496185844160" aria-label="Facebook da DT28" target="_blank" rel="noopener"><svg class="icon-sm icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+  </div>
   <a class="btn btn-primary btn-lg btn-block" href="{wa_geral}">
     <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Falar no WhatsApp
   </a>
@@ -328,9 +336,9 @@ build_page(
         ("O Dualogic precisa de óleo específico?", "Cada aplicação tem uma especificação própria de fluido. Avaliamos o veículo para indicar o produto e o procedimento corretos."),
         ("Dá para reparar sem trocar o câmbio inteiro?", "Em muitos casos sim. O problema costuma estar em componentes específicos, como o atuador ou a embreagem, e pode ser resolvido com reparo direcionado após o diagnóstico."),
     ],
-    hero_img="/img/dualogic-hero.webp",
+    hero_img="/img/componente-dualogic.webp",
     hero_img_alt="Unidade de câmbio Dualogic sobre bancada da DT28 Automáticos",
-    hero_img_w="483", hero_img_h="932",
+    hero_img_w="715", hero_img_h="525",
 )
 
 # ---------------------------------------------------------------
@@ -378,9 +386,9 @@ build_page(
         ("Qual a diferença entre I-MOTION e um câmbio automático convencional?", "O I-MOTION é uma transmissão automatizada: usa uma base de câmbio manual com acionamento eletrônico da embreagem e das marchas, diferente do automático convencional, que utiliza conversor de torque."),
         ("Dá para reparar sem trocar o câmbio inteiro?", "Em muitos casos sim. O problema costuma estar em componentes específicos, e pode ser resolvido com reparo direcionado após o diagnóstico."),
     ],
-    hero_img="/img/imotion-hero.webp",
+    hero_img="/img/componente-imotion.webp",
     hero_img_alt="Unidade de câmbio I-MOTION sobre bancada da DT28 Automáticos",
-    hero_img_w="483", hero_img_h="932",
+    hero_img_w="715", hero_img_h="525",
 )
 
 # ---------------------------------------------------------------
@@ -421,8 +429,8 @@ build_page(
           <li>Leitura e programação de TCM com aparelho avançado, quando aplicável ao veículo</li>
         </ul>
         <div class="content-image">
-          <img src="/img/mecatronica-vw.webp" alt="Módulo de mecatrônica sobre bancada da DT28 Automáticos" loading="lazy" decoding="async" width="483" height="932">
-          <span class="content-image-cap">Mecatrônica: unidade eletrônica que comanda os atuadores do câmbio automatizado</span>
+          <img src="/img/componente-imotion.webp" alt="Unidade de câmbio I-MOTION sobre bancada da DT28 Automáticos" loading="lazy" decoding="async" width="715" height="525">
+          <span class="content-image-cap">I-MOTION: um dos sistemas automatizados atendidos pela DT28</span>
         </div>
 
         <p>Veja o conteúdo específico de <a href="/cambio-dualogic">câmbio Dualogic</a> e <a href="/cambio-i-motion">câmbio I-MOTION</a>, nossos dois sistemas automatizados de maior especialização.</p>
@@ -432,9 +440,9 @@ build_page(
         ("Automatizado é a mesma coisa que automático?", "Não. O automatizado parte de uma base de câmbio manual com acionamento eletrônico das marchas e da embreagem. O automático convencional usa conversor de torque."),
         ("Vocês atendem Dualogic e I-MOTION?", "Sim, são nossas duas maiores especialidades dentro dos sistemas automatizados."),
     ],
-    hero_img="/img/dualogic-imotion-banner.webp",
-    hero_img_alt="Componentes de câmbio automatizado (Dualogic e I-MOTION) sobre bancada da DT28",
-    hero_img_w="1400", hero_img_h="933",
+    hero_img="/img/componente-dualogic.webp",
+    hero_img_alt="Unidade de câmbio Dualogic sobre bancada da DT28 Automáticos",
+    hero_img_w="715", hero_img_h="525",
 )
 
 # ---------------------------------------------------------------
@@ -477,13 +485,13 @@ build_page(
         </ul>
 
         <div class="content-image">
-          <img src="/img/tcm-programacao.webp" alt="Programação de TCM da DT28 em módulo Audi DQ200/0CW com notebook" loading="lazy" decoding="async" width="1300" height="866">
+          <img src="/img/tcm-programacao.webp" alt="Programação de TCM da DT28 em módulo Audi DQ200/0CW com notebook" loading="lazy" decoding="async" width="926" height="675">
           <span class="content-image-cap">Programação de TCM com aparelho avançado, compatível com DQ200 e DQ250</span>
         </div>
 
         <div class="content-image">
-          <img src="/img/dsg-detalhe.webp" alt="Unidade de câmbio DSG sobre bancada da DT28 Automáticos" loading="lazy" decoding="async" width="512" height="341">
-          <span class="content-image-cap">Unidade DSG em diagnóstico na oficina DT28</span>
+          <img src="/img/componente-dsg.webp" alt="Unidade de câmbio DSG de dupla embreagem sobre bancada da DT28 Automáticos" loading="lazy" decoding="async" width="307" height="297">
+          <span class="content-image-cap">Unidade DSG de dupla embreagem em diagnóstico na oficina DT28</span>
         </div>
     """,
     faq_items=[
@@ -491,9 +499,9 @@ build_page(
         ("Vocês fazem troca de óleo por diálise no DSG?", "Sim. A DT28 realiza troca de fluido utilizando equipamento de diálise, conforme aplicação e especificação da transmissão."),
         ("Quais modelos de mecatrônica DSG vocês atendem?", "Trabalhamos com programação de TCM com aparelho avançado, incluindo DQ200, DQ250 e outros. Envie o modelo e o ano do seu carro pelo WhatsApp para confirmarmos o atendimento."),
     ],
-    hero_img="/img/dsg-hero.webp",
-    hero_img_alt="Mecatrônica de câmbio DSG Volkswagen sobre bancada da DT28 Automáticos",
-    hero_img_w="1145", hero_img_h="1374",
+    hero_img="/img/componente-mecatronica-vw.webp",
+    hero_img_alt="Módulo de mecatrônica do câmbio DSG Volkswagen sobre bancada da DT28 Automáticos",
+    hero_img_w="815", hero_img_h="675",
 )
 
 # ---------------------------------------------------------------
@@ -535,7 +543,7 @@ build_page(
         </ul>
 
         <div class="content-image">
-          <img src="/img/dialise-oleo.webp" alt="Equipamento de troca de óleo por diálise da DT28 Automáticos" loading="lazy" decoding="async" width="512" height="342">
+          <img src="/img/dialise-oleo.webp" alt="Equipamento de troca de óleo por diálise da DT28 Automáticos" loading="lazy" decoding="async" width="287" height="293">
           <span class="content-image-cap">Troca de óleo por diálise: fluido limpo, mais vida útil para a transmissão</span>
         </div>
     """,
@@ -544,9 +552,9 @@ build_page(
         ("Vocês fazem troca de óleo CVT por diálise?", "Sim. A DT28 realiza troca de fluido utilizando equipamento de diálise, conforme aplicação e especificação da transmissão."),
         ("Patinação no CVT sempre significa troca da correia?", "Não necessariamente. A patinação pode estar relacionada à correia, ao corpo de válvulas ou à TCM. O diagnóstico é o que indica o componente exato."),
     ],
-    hero_img="/img/cvt-hero.webp",
+    hero_img="/img/componente-cvt.webp",
     hero_img_alt="Unidade de câmbio CVT sobre bancada da DT28 Automáticos",
-    hero_img_w="512", hero_img_h="341",
+    hero_img_w="297", hero_img_h="287",
 )
 
 print("done")

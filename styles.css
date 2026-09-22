@@ -342,9 +342,9 @@ button{font-family:inherit}
 body{padding-bottom:0}
 
 /* galeria de fotos reais */
-.gallery-grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
-@media(min-width:760px){.gallery-grid{grid-template-columns:repeat(4,1fr)}}
-.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--card-border);aspect-ratio:3/4;background:var(--bg-3)}
+.gallery-grid{display:grid;gap:14px;grid-template-columns:1fr;max-width:760px;margin:0 auto}
+@media(min-width:640px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--card-border);aspect-ratio:16/9;background:var(--bg-3)}
 .gallery-item img{width:100%;height:100%;object-fit:cover}
 .gallery-cap{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(10,10,10,.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.1);padding:7px 10px;border-radius:8px;font-size:11.5px;font-weight:600;line-height:1.3}
 
@@ -397,6 +397,15 @@ body{padding-bottom:0}
 .feature-banner{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--card-border);box-shadow:var(--shadow);margin-top:40px}
 .feature-banner img{width:100%;height:auto;display:block}
 .feature-banner-cap{display:block;padding:12px 16px;font-size:13px;color:var(--gray-500);background:var(--bg-2);text-align:center}
+.feature-banner--compact{background:var(--bg-2);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.feature-banner--compact img{width:auto;max-width:100%;height:420px;max-height:60vh;object-fit:contain}
+.feature-banner--compact .feature-banner-cap{width:100%}
+
+.spotlight-media-grid{display:grid;gap:16px;grid-template-columns:1fr;margin-top:40px}
+@media(min-width:640px){.spotlight-media-grid{grid-template-columns:repeat(2,1fr)}}
+.spotlight-media{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--card-border);box-shadow:var(--shadow)}
+.spotlight-media img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.spotlight-media-cap{display:block;padding:12px 16px;font-size:13px;color:var(--gray-500);background:var(--bg-2);text-align:center}
 
 .icon{width:22px;height:22px;flex:none}
 .icon-sm{width:16px;height:16px}
