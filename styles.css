@@ -415,3 +415,19 @@ body{padding-bottom:0}
   html{scroll-behavior:auto}
   *{transition-duration:.001ms !important;animation-duration:.001ms !important}
 }
+
+/* hero banner background (overlay 20%) */
+.hero{
+  background:
+    linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),
+    url("/img/hero-banner-sm.webp") left center/cover no-repeat;
+}
+@media(min-width:960px){.hero{
+  background:
+    linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),
+    url("/img/hero-banner.webp") calc(50% + 420px) center/auto 100% no-repeat,
+    #050505;
+}}
+.hero h1,.hero .hero-lead,.hero .hero-trust{text-shadow:0 2px 14px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.6)}
+.hero .hero-lead{color:var(--gray-100)}
+.hero .hero-trust{color:var(--gray-300)}
