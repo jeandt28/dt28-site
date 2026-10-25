@@ -121,6 +121,32 @@
     });
   }
 
+  // Galeria: amplia a foto em tela cheia, com setas e tecla Esc
+  var lb = document.querySelector("[data-lightbox]");
+  var links = Array.prototype.slice.call(document.querySelectorAll("[data-galeria]"));
+  if (lb && links.length && typeof lb.showModal === "function") {
+    var lbImg = lb.querySelector("[data-lb-img]"), lbCap = lb.querySelector("[data-lb-cap]"), atual = 0;
+    var mostrar = function (i) {
+      atual = (i + links.length) % links.length;
+      var a = links[atual], img = a.querySelector("img"), cap = a.parentNode.querySelector("figcaption");
+      lbImg.src = a.getAttribute("href");
+      lbImg.alt = img ? img.alt : "";
+      lbCap.textContent = cap ? cap.textContent : "";
+    };
+    links.forEach(function (a, i) {
+      a.addEventListener("click", function (e) { e.preventDefault(); mostrar(i); lb.showModal(); });
+    });
+    lb.querySelector("[data-lb-close]").addEventListener("click", function () { lb.close(); });
+    lb.querySelector("[data-lb-prev]").addEventListener("click", function () { mostrar(atual - 1); });
+    lb.querySelector("[data-lb-next]").addEventListener("click", function () { mostrar(atual + 1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
+    lb.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") mostrar(atual - 1);
+      if (e.key === "ArrowRight") mostrar(atual + 1);
+    });
+    lb.addEventListener("close", function () { lbImg.removeAttribute("src"); if (links[atual]) links[atual].focus(); });
+  }
+
   // Ano no rodapé
   var yearEl = document.querySelector("[data-year]");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
