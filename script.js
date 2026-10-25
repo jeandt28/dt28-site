@@ -1,4 +1,4 @@
-// DT28 Automáticos — JS mínimo, sem dependências externas
+// DT28 Câmbios Automáticos — JS mínimo, sem dependências externas
 (function () {
   "use strict";
 
@@ -7,16 +7,26 @@
   var closeBtn = document.querySelector("[data-menu-close]");
   var mobileNav = document.querySelector("[data-mobile-nav]");
 
+  if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
   function openMenu() {
     if (!mobileNav) return;
     mobileNav.classList.add("is-open");
     document.body.style.overflow = "hidden";
+    if (menuBtn) menuBtn.setAttribute("aria-expanded", "true");
+    if (closeBtn) closeBtn.focus();
   }
   function closeMenu() {
     if (!mobileNav) return;
     mobileNav.classList.remove("is-open");
     document.body.style.overflow = "";
+    if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
   }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && mobileNav && mobileNav.classList.contains("is-open")) {
+      closeMenu();
+      if (menuBtn) menuBtn.focus();
+    }
+  });
   if (menuBtn) menuBtn.addEventListener("click", openMenu);
   if (closeBtn) closeBtn.addEventListener("click", closeMenu);
   if (mobileNav) {
@@ -33,6 +43,82 @@
       else header.style.borderBottomColor = "";
     };
     window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  // Medição de contatos (WhatsApp e telefone).
+  // Envia eventos para o GA4 (gtag) ou Google Tag Manager (dataLayer) somente se já estiverem instalados.
+  // Um clique registra a intenção de contato, não um orçamento ou cliente.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+    var tipo = href.indexOf("wa.me/") !== -1 ? "whatsapp" : (href.indexOf("tel:") === 0 ? "telefone" : null);
+    if (!tipo) return;
+    var dados = {
+      contact_method: tipo,
+      link_text: (a.textContent || a.getAttribute("aria-label") || "").trim().slice(0, 80),
+      page_path: location.pathname
+    };
+    var nome = tipo === "whatsapp" ? "click_whatsapp" : "click_telefone";
+    if (typeof window.gtag === "function") {
+      window.gtag("event", nome, dados);
+    } else if (Array.isArray(window.dataLayer)) {
+      dados.event = nome;
+      window.dataLayer.push(dados);
+    }
+  });
+
+  // Instagram: carrega o script de incorporação só quando a seção se aproxima da tela
+  var igSection = document.querySelector(".ig-grid");
+  if (igSection) {
+    var loadIg = function () {
+      if (document.querySelector('script[src*="instagram.com/embed.js"]')) return;
+      var sc = document.createElement("script");
+      sc.async = true;
+      sc.src = "https://www.instagram.com/embed.js";
+      document.body.appendChild(sc);
+    };
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (en) { return en.isIntersecting; })) { loadIg(); io.disconnect(); }
+      }, { rootMargin: "600px 0px" });
+      io.observe(igSection);
+    } else {
+      loadIg();
+    }
+  }
+
+  // Vídeo do topo: começa sozinho sem som (os navegadores bloqueiam som automático).
+  // O botão liga o som e recomeça a apresentação do início.
+  var heroVideo = document.querySelector("[data-hero-video]");
+  var soundBtn = document.querySelector("[data-video-sound]");
+  if (heroVideo) {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { heroVideo.removeAttribute("autoplay"); heroVideo.pause(); }
+    else { var p = heroVideo.play(); if (p && p.catch) p.catch(function () {}); }
+  }
+  if (heroVideo && soundBtn) {
+    soundBtn.addEventListener("click", function () {
+      if (heroVideo.muted) {
+        heroVideo.muted = false;
+        heroVideo.loop = false;
+        heroVideo.currentTime = 0;
+        heroVideo.play();
+        soundBtn.textContent = "🔇 Sem som";
+        soundBtn.setAttribute("aria-pressed", "true");
+        if (typeof window.gtag === "function") window.gtag("event", "video_som_ativado");
+        else if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: "video_som_ativado" });
+      } else {
+        heroVideo.muted = true;
+        soundBtn.textContent = "🔊 Ouvir o Jean";
+        soundBtn.setAttribute("aria-pressed", "false");
+      }
+    });
+    heroVideo.addEventListener("ended", function () {
+      heroVideo.muted = true; heroVideo.loop = true; heroVideo.play();
+      soundBtn.textContent = "🔊 Ouvir o Jean";
+      soundBtn.setAttribute("aria-pressed", "false");
+    });
   }
 
   // Ano no rodapé

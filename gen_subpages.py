@@ -4,7 +4,8 @@
 a partir de um layout compartilhado (mesmo header/footer/sprite do index.html)."""
 import re, json
 
-BUILD = "/home/claude/dt28/build"
+import os
+BUILD = os.path.dirname(os.path.abspath(__file__))
 
 with open(f"{BUILD}/index.html", encoding="utf-8") as f:
     idx = f.read()
@@ -20,8 +21,8 @@ def wa(msg):
 
 HEADER_TMPL = """<header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/#inicio" aria-label="DT28 Automáticos — início">
-      <img src="/img/logo.webp" alt="DT28 Automáticos" width="120" height="40" style="height:32px;width:auto">
+    <a class="brand" href="/#inicio" aria-label="DT28 Câmbios Automáticos — início">
+      <img src="/img/logo.webp" alt="DT28 Câmbios Automáticos" width="120" height="40" style="height:32px;width:auto">
     </a>
     <nav class="main-nav" aria-label="Principal">
       <a href="/#servicos">Serviços</a>
@@ -48,7 +49,7 @@ HEADER_TMPL = """<header class="site-header">
 
 <div class="mobile-nav" data-mobile-nav>
   <div class="mobile-nav-top">
-    <span class="brand"><img src="/img/logo.webp" alt="DT28 Automáticos" style="height:28px;width:auto"></span>
+    <span class="brand"><img src="/img/logo.webp" alt="DT28 Câmbios Automáticos" style="height:28px;width:auto"></span>
     <button class="menu-btn" data-menu-close aria-label="Fechar menu">
       <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
     </button>
@@ -75,7 +76,7 @@ FOOTER_TMPL = """<footer class="site-footer">
   <div class="container">
     <div class="footer-top">
       <div>
-        <div class="footer-brand"><img src="/img/logo.webp" alt="DT28 Automáticos" style="height:26px;width:auto"></div>
+        <div class="footer-brand"><img src="/img/logo.webp" alt="DT28 Câmbios Automáticos" style="height:26px;width:auto"></div>
         <p>Especialistas em transmissões automáticas em Sarandi e Maringá · 12 anos de experiência. Diagnóstico eletrônico, reparo técnico e garantia por escrito.</p>
         <div class="social-row">
           <a class="social-btn" href="https://www.instagram.com/dt28_cambioautomaticos/" aria-label="Instagram da DT28"><svg class="icon-sm icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
@@ -90,9 +91,16 @@ FOOTER_TMPL = """<footer class="site-footer">
         <a href="/cambio-automatizado">Câmbio Automatizado</a>
         <a href="/cambio-dsg">Câmbio DSG</a>
         <a href="/cambio-cvt">Câmbio CVT</a>
+        <a href="/cambio-powershift">Câmbio PowerShift</a>
       </div>
       <div class="footer-col">
-        <h4>DT28 Automáticos</h4>
+        <h4>Serviços e guias</h4>
+        <a href="/troca-de-oleo-cambio-automatico">Troca de óleo por diálise</a>
+        <a href="/programacao-tcm">Diagnóstico e programação de TCM</a>
+        <a href="/sinais-de-problema-no-cambio-automatico">Sinais de problema no câmbio</a>
+      </div>
+      <div class="footer-col">
+        <h4>DT28 Câmbios Automáticos</h4>
         <a href="/#servicos">Serviços</a>
         <a href="/#avaliacoes">Avaliações</a>
         <a href="/#faq">Dúvidas frequentes</a>
@@ -101,7 +109,7 @@ FOOTER_TMPL = """<footer class="site-footer">
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2026</span> DT28 Automáticos. Todos os direitos reservados.</span>
+      <span>© <span data-year>2026</span> DT28 Câmbios Automáticos. Todos os direitos reservados.</span>
       <span>CNPJ 47.576.083/0001-25</span>
     </div>
   </div>
@@ -129,7 +137,7 @@ PAGE_TMPL = """<!DOCTYPE html>
 <meta property="og:url" content="{canonical}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="DT28 Automáticos">
+<meta property="og:site_name" content="DT28 Câmbios Automáticos">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:image" content="https://www.dt28cambioautomaticos.com.br/og-image.jpg">
@@ -138,7 +146,7 @@ PAGE_TMPL = """<!DOCTYPE html>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">{schema}</script>
 </head>
@@ -159,7 +167,7 @@ PAGE_TMPL = """<!DOCTYPE html>
       <h1>{h1}</h1>
       <p class="hero-lead">{lead}</p>
       <div class="cta-row" style="margin-top:24px">
-        <a class="btn btn-primary btn-lg" href="{wa_specific}">📲 Falar com um especialista sobre {short_name}</a>
+        <a class="btn btn-primary btn-lg" href="{wa_specific}">📲 {cta_text}</a>
         <a class="btn btn-outline btn-lg" href="/#servicos">Ver todos os serviços</a>
       </div>
       <div class="subpage-hero-media">
@@ -173,12 +181,12 @@ PAGE_TMPL = """<!DOCTYPE html>
       <div class="content-block">
         {body}
 
-        <h2>Perguntas frequentes sobre {short_name}</h2>
+        <h2>Perguntas frequentes</h2>
         <div class="faq-list">
           {faq_html}
         </div>
 
-        <h2>Outras transmissões que trabalhamos</h2>
+        <h2>Veja também</h2>
         <div class="related-row">
           {related_links}
         </div>
@@ -186,9 +194,9 @@ PAGE_TMPL = """<!DOCTYPE html>
 
       <aside class="side-cta">
         <h3>Diagnóstico especializado</h3>
-        <p>Envie o modelo, ano e sintoma do seu {short_name} e receba orientação sobre o próximo passo para avaliação do veículo.</p>
+        <p>Envie o modelo, o ano, o tipo de câmbio (se souber) e o sintoma. Nossa equipe orienta o próximo passo e combina o melhor dia para avaliar o veículo.</p>
         <a class="btn btn-primary btn-block" href="{wa_specific}">📲 Falar no WhatsApp</a>
-        <p style="margin-top:16px;font-size:13px">Rua Tiradentes, 782 – Sarandi/PR<br>Seg. a sex.: 08h–12h · 13h30–18h</p>
+        <p style="margin-top:16px;font-size:13px">Rua Tiradentes, 782 – Jardim Panorama, Sarandi/PR<br>Seg. a sex.: 08h–12h · 13h30–18h<br><a href="tel:+5544998034786">(44) 99803-4786</a></p>
       </aside>
     </div>
   </section>
@@ -197,7 +205,7 @@ PAGE_TMPL = """<!DOCTYPE html>
     <div class="container">
       <div class="final-cta">
         <span class="eyebrow">Fale com a DT28</span>
-        <h2>Está com problema no {short_name}?</h2>
+        <h2>{final_q}</h2>
         <p>Envie o modelo, ano do veículo e os sintomas apresentados. Nossa equipe poderá orientar você sobre o próximo passo para avaliação do veículo.</p>
         <div class="cta-row">
           <a class="btn btn-primary btn-lg" href="{wa_specific}">📲 Falar com a DT28 no WhatsApp</a>
@@ -215,14 +223,21 @@ ALL_PAGES = {
     "automatizado": {"name": "Automatizado", "slug": "cambio-automatizado"},
     "dsg": {"name": "DSG", "slug": "cambio-dsg"},
     "cvt": {"name": "CVT", "slug": "cambio-cvt"},
+    "powershift": {"name": "PowerShift", "slug": "cambio-powershift"},
+    "diálise": {"name": "Troca de óleo por diálise", "slug": "troca-de-oleo-cambio-automatico", "label": "Troca de óleo por diálise"},
+    "tcm": {"name": "TCM", "slug": "programacao-tcm", "label": "Diagnóstico e programação de TCM"},
+    "sinais": {"name": "câmbio automático", "slug": "sinais-de-problema-no-cambio-automatico", "label": "Sinais de problema no câmbio automático"},
 }
+
+def label(v):
+    return v.get("label", f"Câmbio {v['name']}")
 
 def related_row(exclude_key):
     links = []
     for k, v in ALL_PAGES.items():
         if k == exclude_key:
             continue
-        links.append(f'<a href="/{v["slug"]}">Câmbio {v["name"]}</a>')
+        links.append(f'<a href="/{v["slug"]}">{label(v)}</a>')
     return "\n          ".join(links)
 
 def faq_block(items):
@@ -241,6 +256,12 @@ def faq_schema(items):
         ]
     }
 
+PROVIDER = {"@type": "AutoRepair", "@id": "https://www.dt28cambioautomaticos.com.br/#empresa",
+            "name": "DT28 Câmbios Automáticos", "telephone": "+55-44-99803-4786",
+            "url": "https://www.dt28cambioautomaticos.com.br/",
+            "address": {"@type": "PostalAddress", "streetAddress": "Rua Tiradentes, 782 - Jardim Panorama",
+                        "addressLocality": "Sarandi", "addressRegion": "PR", "postalCode": "87113-060", "addressCountry": "BR"}}
+
 def breadcrumb_schema(name, url):
     return {
         "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -251,23 +272,29 @@ def breadcrumb_schema(name, url):
     }
 
 def build_page(key, title, description, h1, lead, eyebrow, body_html, faq_items, wa_msg,
-                hero_img, hero_img_alt, hero_img_w, hero_img_h):
+                hero_img, hero_img_alt, hero_img_w, hero_img_h, kind="service", final_q=None, cta_text=None):
     info = ALL_PAGES[key]
     canonical = f"https://www.dt28cambioautomaticos.com.br/{info['slug']}"
     wa_link = wa(wa_msg)
     wa_geral = wa("Olá! Vim pelo site da DT28 e gostaria de falar sobre o câmbio do meu carro.")
 
     schema_list = [
-        breadcrumb_schema(f"Câmbio {info['name']}", canonical),
+        breadcrumb_schema(label(info), canonical),
         faq_schema(faq_items),
         {
             "@context": "https://schema.org", "@type": "Service",
-            "serviceType": f"Diagnóstico, manutenção e reparo de câmbio {info['name']}",
-            "provider": {"@type": "AutoRepair", "name": "DT28 Automáticos", "telephone": "+55-44-99803-4786",
-                         "address": {"@type": "PostalAddress", "streetAddress": "Rua Tiradentes, 782 - Jardim Panorama",
-                                     "addressLocality": "Sarandi", "addressRegion": "PR", "postalCode": "87113-060", "addressCountry": "BR"}},
+            "name": h1,
+            "serviceType": label(info),
+            "provider": PROVIDER,
             "areaServed": [{"@type": "City", "name": "Sarandi"}, {"@type": "City", "name": "Maringá"}],
             "url": canonical
+        } if kind == "service" else {
+            "@context": "https://schema.org", "@type": "Article",
+            "headline": h1, "description": description, "inLanguage": "pt-BR",
+            "author": {"@type": "Organization", "name": "DT28 Câmbios Automáticos"},
+            "publisher": PROVIDER, "mainEntityOfPage": canonical,
+            "datePublished": "2026-10-25", "dateModified": "2026-10-25",
+            "image": "https://www.dt28cambioautomaticos.com.br" + hero_img
         }
     ]
     # combine as @graph
@@ -277,7 +304,9 @@ def build_page(key, title, description, h1, lead, eyebrow, body_html, faq_items,
         title=title, description=description, canonical=canonical,
         schema=schema, sprite=sprite,
         header=HEADER_TMPL.format(wa_geral=wa_geral),
-        crumb=f"Câmbio {info['name']}",
+        crumb=label(info),
+        final_q=final_q or f"Está com problema no câmbio {info['name']}?",
+        cta_text=cta_text or f"Falar com um especialista em {info['name']}",
         eyebrow=eyebrow, h1=h1, lead=lead,
         wa_specific=wa_link, short_name=info["name"],
         hero_img=hero_img, hero_img_alt=hero_img_alt, hero_img_w=hero_img_w, hero_img_h=hero_img_h,
@@ -296,10 +325,10 @@ def build_page(key, title, description, h1, lead, eyebrow, body_html, faq_items,
 # ---------------------------------------------------------------
 build_page(
     key="dualogic",
-    title="Câmbio Dualogic: Diagnóstico e Reparo em Sarandi e Maringá | DT28 Automáticos",
+    title="Câmbio Dualogic em Sarandi e Maringá | DT28",
     description="Especialista em câmbio Dualogic em Sarandi e Maringá. Diagnóstico eletrônico, manutenção e reparo com garantia por escrito. Fale com a DT28 no WhatsApp.",
     h1="Câmbio Dualogic em Sarandi e Maringá",
-    lead="A DT28 Automáticos é referência regional em diagnóstico, manutenção e reparo de transmissões Dualogic.",
+    lead="A DT28 Câmbios Automáticos é referência regional em diagnóstico, manutenção e reparo de transmissões Dualogic.",
     eyebrow="Especialista em Dualogic",
     wa_msg="Olá! Meu carro tem câmbio Dualogic e está com problema. Carro/ano: ____ Sintoma: ____",
     body_html="""
@@ -337,7 +366,7 @@ build_page(
         ("Dá para reparar sem trocar o câmbio inteiro?", "Em muitos casos sim. O problema costuma estar em componentes específicos, como o atuador ou a embreagem, e pode ser resolvido com reparo direcionado após o diagnóstico."),
     ],
     hero_img="/img/componente-dualogic.webp",
-    hero_img_alt="Unidade de câmbio Dualogic sobre bancada da DT28 Automáticos",
+    hero_img_alt="Unidade de câmbio Dualogic sobre bancada da DT28 Câmbios Automáticos",
     hero_img_w="715", hero_img_h="525",
 )
 
@@ -346,10 +375,10 @@ build_page(
 # ---------------------------------------------------------------
 build_page(
     key="imotion",
-    title="Câmbio I-MOTION: Diagnóstico e Reparo em Sarandi e Maringá | DT28 Automáticos",
+    title="Câmbio I-MOTION em Sarandi e Maringá | DT28",
     description="Especialista em câmbio I-MOTION em Sarandi e Maringá. Diagnóstico eletrônico, manutenção e reparo com garantia por escrito. Fale com a DT28 no WhatsApp.",
     h1="Câmbio I-MOTION em Sarandi e Maringá",
-    lead="A DT28 Automáticos é referência regional em diagnóstico, manutenção e reparo de transmissões I-MOTION.",
+    lead="A DT28 Câmbios Automáticos é referência regional em diagnóstico, manutenção e reparo de transmissões I-MOTION.",
     eyebrow="Especialista em I-MOTION",
     wa_msg="Olá! Meu carro tem câmbio I-MOTION e está com problema. Carro/ano: ____ Sintoma: ____",
     body_html="""
@@ -387,7 +416,7 @@ build_page(
         ("Dá para reparar sem trocar o câmbio inteiro?", "Em muitos casos sim. O problema costuma estar em componentes específicos, e pode ser resolvido com reparo direcionado após o diagnóstico."),
     ],
     hero_img="/img/componente-imotion.webp",
-    hero_img_alt="Unidade de câmbio I-MOTION sobre bancada da DT28 Automáticos",
+    hero_img_alt="Unidade de câmbio I-MOTION sobre bancada da DT28 Câmbios Automáticos",
     hero_img_w="715", hero_img_h="525",
 )
 
@@ -396,7 +425,7 @@ build_page(
 # ---------------------------------------------------------------
 build_page(
     key="automatizado",
-    title="Câmbio Automatizado: Diagnóstico e Manutenção em Sarandi e Maringá | DT28",
+    title="Câmbio Automatizado em Sarandi e Maringá | DT28",
     description="Especialistas em câmbio automatizado em Sarandi e Maringá: Dualogic, I-MOTION, EASYTRONIC. Diagnóstico eletrônico e reparo com garantia. WhatsApp DT28.",
     h1="Câmbio Automatizado em Sarandi e Maringá",
     lead="Trabalhamos com diagnóstico, manutenção e reparo de sistemas de câmbio automatizado, com destaque para Dualogic e I-MOTION.",
@@ -429,7 +458,7 @@ build_page(
           <li>Leitura e programação de TCM com aparelho avançado, quando aplicável ao veículo</li>
         </ul>
         <div class="content-image">
-          <img src="/img/componente-imotion.webp" alt="Unidade de câmbio I-MOTION sobre bancada da DT28 Automáticos" loading="lazy" decoding="async" width="715" height="525">
+          <img src="/img/componente-imotion.webp" alt="Unidade de câmbio I-MOTION sobre bancada da DT28 Câmbios Automáticos" loading="lazy" decoding="async" width="715" height="525">
           <span class="content-image-cap">I-MOTION: um dos sistemas automatizados atendidos pela DT28</span>
         </div>
 
@@ -441,7 +470,7 @@ build_page(
         ("Vocês atendem Dualogic e I-MOTION?", "Sim, são nossas duas maiores especialidades dentro dos sistemas automatizados."),
     ],
     hero_img="/img/componente-dualogic.webp",
-    hero_img_alt="Unidade de câmbio Dualogic sobre bancada da DT28 Automáticos",
+    hero_img_alt="Unidade de câmbio Dualogic sobre bancada da DT28 Câmbios Automáticos",
     hero_img_w="715", hero_img_h="525",
 )
 
@@ -450,7 +479,7 @@ build_page(
 # ---------------------------------------------------------------
 build_page(
     key="dsg",
-    title="Câmbio DSG: Diagnóstico e Manutenção em Sarandi e Maringá | DT28 Automáticos",
+    title="Manutenção de Câmbio DSG em Sarandi e Maringá | DT28",
     description="Diagnóstico e manutenção de câmbio DSG em Sarandi e Maringá. Mecatrônica, leitura eletrônica e reparo com garantia por escrito. Fale com a DT28.",
     h1="Câmbio DSG em Sarandi e Maringá",
     lead="Trabalhamos com diagnóstico e manutenção de transmissões DSG, incluindo mecatrônica e leitura eletrônica.",
@@ -490,7 +519,7 @@ build_page(
         </div>
 
         <div class="content-image">
-          <img src="/img/componente-dsg.webp" alt="Unidade de câmbio DSG de dupla embreagem sobre bancada da DT28 Automáticos" loading="lazy" decoding="async" width="307" height="297">
+          <img src="/img/componente-dsg.webp" alt="Unidade de câmbio DSG de dupla embreagem sobre bancada da DT28 Câmbios Automáticos" loading="lazy" decoding="async" width="307" height="297">
           <span class="content-image-cap">Unidade DSG de dupla embreagem em diagnóstico na oficina DT28</span>
         </div>
     """,
@@ -500,7 +529,7 @@ build_page(
         ("Quais modelos de mecatrônica DSG vocês atendem?", "Trabalhamos com programação de TCM com aparelho avançado, incluindo DQ200, DQ250 e outros. Envie o modelo e o ano do seu carro pelo WhatsApp para confirmarmos o atendimento."),
     ],
     hero_img="/img/componente-mecatronica-vw.webp",
-    hero_img_alt="Módulo de mecatrônica do câmbio DSG Volkswagen sobre bancada da DT28 Automáticos",
+    hero_img_alt="Módulo de mecatrônica do câmbio DSG Volkswagen sobre bancada da DT28 Câmbios Automáticos",
     hero_img_w="815", hero_img_h="675",
 )
 
@@ -509,7 +538,7 @@ build_page(
 # ---------------------------------------------------------------
 build_page(
     key="cvt",
-    title="Câmbio CVT: Diagnóstico e Manutenção em Sarandi e Maringá | DT28 Automáticos",
+    title="Manutenção de Câmbio CVT em Sarandi e Maringá | DT28",
     description="Especialistas em câmbio CVT em Sarandi e Maringá: correia, polias, corpo de válvulas e TCM. Diagnóstico eletrônico e troca de óleo por diálise.",
     h1="Câmbio CVT em Sarandi e Maringá",
     lead="Trabalhamos com diagnóstico e manutenção de transmissões CVT, da correia ao corpo de válvulas.",
@@ -543,7 +572,7 @@ build_page(
         </ul>
 
         <div class="content-image">
-          <img src="/img/dialise-oleo.webp" alt="Equipamento de troca de óleo por diálise da DT28 Automáticos" loading="lazy" decoding="async" width="287" height="293">
+          <img src="/img/dialise-oleo.webp" alt="Equipamento de troca de óleo por diálise da DT28 Câmbios Automáticos" loading="lazy" decoding="async" width="287" height="293">
           <span class="content-image-cap">Troca de óleo por diálise: fluido limpo, mais vida útil para a transmissão</span>
         </div>
     """,
@@ -553,8 +582,9 @@ build_page(
         ("Patinação no CVT sempre significa troca da correia?", "Não necessariamente. A patinação pode estar relacionada à correia, ao corpo de válvulas ou à TCM. O diagnóstico é o que indica o componente exato."),
     ],
     hero_img="/img/componente-cvt.webp",
-    hero_img_alt="Unidade de câmbio CVT sobre bancada da DT28 Automáticos",
+    hero_img_alt="Unidade de câmbio CVT sobre bancada da DT28 Câmbios Automáticos",
     hero_img_w="297", hero_img_h="287",
 )
 
+exec(open(os.path.join(BUILD, "gen_pages_novas.py"), encoding="utf-8").read())
 print("done")
