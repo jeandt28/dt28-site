@@ -56,7 +56,7 @@ build_page(
 build_page(
     key="powershift",
     title="Câmbio PowerShift em Sarandi e Maringá | DT28",
-    description="Diagnóstico, manutenção e programação de TCM do câmbio PowerShift de dupla embreagem em Sarandi, atendendo Maringá e região. Fale com a DT28.",
+    description="PowerShift trepidando ou patinando? Troca de embreagem dupla, módulo TCM e programação no Focus, Fiesta e EcoSport. Pré-diagnóstico grátis na DT28.",
     h1="Câmbio PowerShift em Sarandi e Maringá",
     lead="Diagnóstico, manutenção e programação de módulo do câmbio PowerShift de dupla embreagem.",
     eyebrow="Dupla embreagem",
@@ -107,8 +107,8 @@ build_page(
 # ---------------------------------------------------------------
 build_page(
     key="tcm",
-    title="Diagnóstico e Programação de TCM do Câmbio em Sarandi | DT28",
-    description="Programação de TCM com aparelho avançado, clonagem de módulo e instalação de código VIN para câmbio automático e de dupla embreagem. DT28 em Sarandi.",
+    title="Programação de TCM do Câmbio em Sarandi e Maringá | DT28",
+    description="Módulo do câmbio com defeito? Programação e clonagem de TCM e gravação de VIN com equipamento avançado. DT28 em Sarandi, atendendo Maringá e região.",
     h1="Diagnóstico e programação de TCM em Sarandi",
     lead="Programação do módulo de controle da transmissão com aparelho avançado, clonagem de módulo e instalação de código VIN.",
     eyebrow="Módulo de transmissão",
