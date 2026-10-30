@@ -95,7 +95,12 @@
   if (heroVideo) {
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) { heroVideo.removeAttribute("autoplay"); heroVideo.pause(); }
-    else { var p = heroVideo.play(); if (p && p.catch) p.catch(function () {}); }
+    else {
+      // Espera a página terminar de carregar para não disputar banda com o conteúdo principal
+      var startVideo = function () { var p = heroVideo.play(); if (p && p.catch) p.catch(function () {}); };
+      if (document.readyState === "complete") startVideo();
+      else window.addEventListener("load", startVideo, { once: true });
+    }
   }
   if (heroVideo && soundBtn) {
     soundBtn.addEventListener("click", function () {
@@ -150,4 +155,24 @@
   // Ano no rodapé
   var yearEl = document.querySelector("[data-year]");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Revelação suave ao rolar: só para blocos abaixo da primeira tela; sem JS tudo aparece normalmente
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    var alvos = document.querySelectorAll(".section-head, .card, .step, .gallery-item, .galeria-item, .spot-card, .faq-item, .final-cta, .video-frame, .evidence-item, .content-image");
+    var limite = window.innerHeight * 0.9;
+    var revIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add("is-in");
+        revIo.unobserve(en.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    var pendentes = 0;
+    alvos.forEach(function (el) {
+      if (el.getBoundingClientRect().top < limite) return;
+      el.classList.add("reveal"); revIo.observe(el); pendentes++;
+    });
+    if (pendentes) document.documentElement.classList.add("js-reveal");
+  }
 })();

@@ -6,6 +6,9 @@ import re, json
 
 import os
 BUILD = os.path.dirname(os.path.abspath(__file__))
+import sys
+sys.path.insert(0, BUILD)
+from conteudo_seo import EXTRA
 
 with open(f"{BUILD}/index.html", encoding="utf-8") as f:
     idx = f.read()
@@ -22,7 +25,7 @@ def wa(msg):
 HEADER_TMPL = """<header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/#inicio" aria-label="DT28 Câmbios Automáticos — início">
-      <img src="/img/logo.webp" alt="DT28 Câmbios Automáticos" width="120" height="40" style="height:32px;width:auto">
+      <img src="/img/logo-dt28.webp" alt="DT28 Câmbios Automáticos" width="570" height="128" class="logo-img">
     </a>
     <nav class="main-nav" aria-label="Principal">
       <a href="/#servicos">Serviços</a>
@@ -49,7 +52,7 @@ HEADER_TMPL = """<header class="site-header">
 
 <div class="mobile-nav" data-mobile-nav>
   <div class="mobile-nav-top">
-    <span class="brand"><img src="/img/logo.webp" alt="DT28 Câmbios Automáticos" style="height:28px;width:auto"></span>
+    <span class="brand"><img src="/img/logo-dt28.webp" alt="DT28 Câmbios Automáticos" width="570" height="128" style="height:30px;width:auto"></span>
     <button class="menu-btn" data-menu-close aria-label="Fechar menu">
       <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
     </button>
@@ -76,8 +79,8 @@ FOOTER_TMPL = """<footer class="site-footer">
   <div class="container">
     <div class="footer-top">
       <div>
-        <div class="footer-brand"><img src="/img/logo.webp" alt="DT28 Câmbios Automáticos" style="height:26px;width:auto"></div>
-        <p>Especialistas em transmissões automáticas em Sarandi e Maringá · 12 anos de experiência. Diagnóstico eletrônico, reparo técnico e garantia por escrito.</p>
+        <div class="footer-brand"><img src="/img/logo-dt28.webp" alt="DT28 Câmbios Automáticos" width="570" height="128" loading="lazy" style="height:34px;width:auto"></div>
+        <p>Especialistas em transmissões automáticas em Sarandi e Maringá · 12 anos de experiência. Atendemos também Paiçandu, Marialva e região. Diagnóstico eletrônico, reparo técnico e garantia por escrito.</p>
         <div class="social-row">
           <a class="social-btn" href="https://www.instagram.com/dt28_cambioautomaticos/" aria-label="Instagram da DT28"><svg class="icon-sm icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
           <a class="social-btn" href="https://www.facebook.com/104496185844160" aria-label="Facebook da DT28"><svg class="icon-sm icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
@@ -166,8 +169,13 @@ PAGE_TMPL = """<!DOCTYPE html>
       <span class="eyebrow">{eyebrow}</span>
       <h1>{h1}</h1>
       <p class="hero-lead">{lead}</p>
+      <div class="hero-trust" style="margin-top:16px">
+        <span><svg class="icon-sm icon" aria-hidden="true"><use href="#i-check"/></svg>Pré-diagnóstico gratuito</span>
+        <span><svg class="icon-sm icon" aria-hidden="true"><use href="#i-pin"/></svg>Rua Tiradentes, 782 · Sarandi/PR</span>
+        <span><svg class="icon-sm icon" aria-hidden="true"><use href="#i-shield"/></svg>Garantia por escrito</span>
+      </div>
       <div class="cta-row" style="margin-top:24px">
-        <a class="btn btn-primary btn-lg" href="{wa_specific}">📲 {cta_text}</a>
+        <a class="btn btn-primary btn-lg" href="{wa_specific}"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-whatsapp"/></svg> {cta_text}</a>
         <a class="btn btn-outline btn-lg" href="/#servicos">Ver todos os serviços</a>
       </div>
       <div class="subpage-hero-media">
@@ -193,10 +201,10 @@ PAGE_TMPL = """<!DOCTYPE html>
       </div>
 
       <aside class="side-cta">
-        <h3>Diagnóstico especializado</h3>
+        <h3>Pré-diagnóstico gratuito</h3>
         <p>Envie o modelo, o ano, o tipo de câmbio (se souber) e o sintoma. Nossa equipe orienta o próximo passo e combina o melhor dia para avaliar o veículo.</p>
-        <a class="btn btn-primary btn-block" href="{wa_specific}">📲 Falar no WhatsApp</a>
-        <p style="margin-top:16px;font-size:13px">Rua Tiradentes, 782 – Jardim Panorama, Sarandi/PR<br>Seg. a sex.: 08h–12h · 13h30–18h<br><a href="tel:+5544998034786">(44) 99803-4786</a></p>
+        <a class="btn btn-primary btn-block" href="{wa_specific}"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-whatsapp"/></svg> Falar no WhatsApp</a>
+        <p style="margin-top:16px;font-size:13px">Rua Tiradentes, 782 – Jardim Panorama, Sarandi/PR<br>Seg. a sex.: 08h–12h · 13h30–18h<br>Atendemos Sarandi, Maringá, Paiçandu, Marialva e região<br><a href="tel:+5544998034786">(44) 99803-4786</a></p>
       </aside>
     </div>
   </section>
@@ -208,7 +216,7 @@ PAGE_TMPL = """<!DOCTYPE html>
         <h2>{final_q}</h2>
         <p>Envie o modelo, ano do veículo e os sintomas apresentados. Nossa equipe poderá orientar você sobre o próximo passo para avaliação do veículo.</p>
         <div class="cta-row">
-          <a class="btn btn-primary btn-lg" href="{wa_specific}">📲 Falar com a DT28 no WhatsApp</a>
+          <a class="btn btn-primary btn-lg" href="{wa_specific}"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-whatsapp"/></svg> Falar com a DT28 no WhatsApp</a>
         </div>
       </div>
     </div>
@@ -262,6 +270,8 @@ PROVIDER = {"@type": "AutoRepair", "@id": "https://www.dt28cambioautomaticos.com
             "address": {"@type": "PostalAddress", "streetAddress": "Rua Tiradentes, 782 - Jardim Panorama",
                         "addressLocality": "Sarandi", "addressRegion": "PR", "postalCode": "87113-060", "addressCountry": "BR"}}
 
+AREA = [{"@type": "City", "name": c} for c in ("Sarandi", "Maringá", "Paiçandu", "Marialva")]
+
 def breadcrumb_schema(name, url):
     return {
         "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -274,6 +284,13 @@ def breadcrumb_schema(name, url):
 def build_page(key, title, description, h1, lead, eyebrow, body_html, faq_items, wa_msg,
                 hero_img, hero_img_alt, hero_img_w, hero_img_h, kind="service", final_q=None, cta_text=None):
     info = ALL_PAGES[key]
+    ex = EXTRA.get(key, {})
+    title = ex.get("title", title)
+    h1 = ex.get("h1", h1)
+    description = ex.get("description", description)
+    body_html = body_html + ex.get("body", "")
+    fix = ex.get("faq_fix", {})
+    faq_items = [(q, fix.get(q, a)) for q, a in faq_items] + ex.get("faq", [])
     canonical = f"https://www.dt28cambioautomaticos.com.br/{info['slug']}"
     wa_link = wa(wa_msg)
     wa_geral = wa("Olá! Vim pelo site da DT28 e gostaria de falar sobre o câmbio do meu carro.")
@@ -286,14 +303,14 @@ def build_page(key, title, description, h1, lead, eyebrow, body_html, faq_items,
             "name": h1,
             "serviceType": label(info),
             "provider": PROVIDER,
-            "areaServed": [{"@type": "City", "name": "Sarandi"}, {"@type": "City", "name": "Maringá"}],
+            "areaServed": AREA,
             "url": canonical
         } if kind == "service" else {
             "@context": "https://schema.org", "@type": "Article",
             "headline": h1, "description": description, "inLanguage": "pt-BR",
             "author": {"@type": "Organization", "name": "DT28 Câmbios Automáticos"},
             "publisher": PROVIDER, "mainEntityOfPage": canonical,
-            "datePublished": "2026-10-25", "dateModified": "2026-10-25",
+            "datePublished": "2026-10-25", "dateModified": "2026-10-30",
             "image": "https://www.dt28cambioautomaticos.com.br" + hero_img
         }
     ]
