@@ -25,7 +25,7 @@ def wa(msg):
 HEADER_TMPL = """<header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/#inicio" aria-label="DT28 Câmbios Automáticos — início">
-      <img src="/img/logo-dt28.webp" alt="DT28 Câmbios Automáticos" width="570" height="128" class="logo-img">
+      <span class="logo-anim" role="img" aria-label="DT28 Câmbios Automáticos"><img src="/img/logo-base.webp" alt="" width="1100" height="272"><img class="logo-lever" src="/img/logo-alavanca.webp" alt="" width="1100" height="272"><i class="led led-p"></i><i class="led led-r"></i><i class="led led-n"></i><i class="led led-d"></i></span>
     </a>
     <nav class="main-nav" aria-label="Principal">
       <a href="/#servicos">Serviços</a>
@@ -52,7 +52,7 @@ HEADER_TMPL = """<header class="site-header">
 
 <div class="mobile-nav" data-mobile-nav>
   <div class="mobile-nav-top">
-    <span class="brand"><img src="/img/logo-dt28.webp" alt="DT28 Câmbios Automáticos" width="570" height="128" style="height:30px;width:auto"></span>
+    <span class="brand"><span class="logo-anim" role="img" aria-label="DT28 Câmbios Automáticos"><img src="/img/logo-base.webp" alt="" width="1100" height="272"><img class="logo-lever" src="/img/logo-alavanca.webp" alt="" width="1100" height="272"><i class="led led-p"></i><i class="led led-r"></i><i class="led led-n"></i><i class="led led-d"></i></span></span>
     <button class="menu-btn" data-menu-close aria-label="Fechar menu">
       <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
     </button>
@@ -79,7 +79,7 @@ FOOTER_TMPL = """<footer class="site-footer">
   <div class="container">
     <div class="footer-top">
       <div>
-        <div class="footer-brand"><img src="/img/logo-dt28.webp" alt="DT28 Câmbios Automáticos" width="570" height="128" loading="lazy" style="height:34px;width:auto"></div>
+        <div class="footer-brand"><span class="logo-anim" role="img" aria-label="DT28 Câmbios Automáticos"><img src="/img/logo-base.webp" alt="" width="1100" height="272" loading="lazy"><img class="logo-lever" src="/img/logo-alavanca.webp" alt="" width="1100" height="272" loading="lazy"><i class="led led-p"></i><i class="led led-r"></i><i class="led led-n"></i><i class="led led-d"></i></span></div>
         <p>Especialistas em transmissões automáticas em Sarandi e Maringá · 12 anos de experiência. Atendemos também Paiçandu, Marialva e região. Diagnóstico eletrônico, reparo técnico e garantia por escrito.</p>
         <div class="social-row">
           <a class="social-btn" href="https://www.instagram.com/dt28_cambioautomaticos/" aria-label="Instagram da DT28"><svg class="icon-sm icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
@@ -123,7 +123,7 @@ FOOTER_TMPL = """<footer class="site-footer">
   <span class="wa-text">Falar com especialista</span>
 </a>
 
-<script src="/script.js" defer></script>
+<script src="/script.js?v=20261030d" defer></script>
 </body>
 </html>
 """
@@ -132,14 +132,6 @@ PAGE_TMPL = """<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1CT3D4407K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
-  gtag('js', new Date());
-  gtag('config', 'G-1CT3D4407K');
-</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{description}">
@@ -158,7 +150,7 @@ PAGE_TMPL = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=20261030d">
 <script type="application/ld+json">{schema}</script>
 <script>window.va = window.va || function () {{ (window.vaq = window.vaq || []).push(arguments); }};</script>
 <script defer src="/_vercel/insights/script.js"></script>

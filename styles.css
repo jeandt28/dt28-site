@@ -537,3 +537,31 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   .step::before,.card-icon{transition:none}
   .rating-card .stars{color:var(--red-light);background:none}
 }
+
+/* ---------- logo com alavanca animada (P R N D) ---------- */
+.logo-anim{position:relative;display:inline-block;height:38px;aspect-ratio:1100/272;flex:none;line-height:0}
+.logo-anim img{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+.logo-anim .logo-lever{will-change:transform;animation:dt-lever 9s infinite}
+.logo-anim .led{position:absolute;width:2.5%;aspect-ratio:1.6;border-radius:40%;transform:translate(-50%,-50%) rotate(-25deg);background:radial-gradient(ellipse,#ff1a2e 0,#ff1a2e 55%,rgba(255,26,46,0) 75%);mix-blend-mode:multiply;opacity:0;pointer-events:none}
+.logo-anim .led-p{left:4.433%;top:61.922%;animation:dt-led-p 9s infinite}
+.logo-anim .led-r{left:5.256%;top:68.762%;animation:dt-led-r 9s infinite}
+.logo-anim .led-n{left:6.261%;top:75.786%;animation:dt-led-n 9s infinite}
+.logo-anim .led-d{left:6.947%;top:81.701%;animation:dt-led-d 9s infinite}
+@keyframes dt-lever{
+  0%,18%{transform:translate(0,0);animation-timing-function:cubic-bezier(.4,0,.2,1.35)}
+  24%,30%{transform:translate(-.32%,-2.588%);animation-timing-function:cubic-bezier(.4,0,.2,1.35)}
+  36%,44%{transform:translate(-.594%,-5.176%);animation-timing-function:cubic-bezier(.4,0,.2,1.35)}
+  50%,68%{transform:translate(-.914%,-7.763%);animation-timing-function:cubic-bezier(.4,0,.2,1.35)}
+  74%{transform:translate(-.594%,-5.176%);animation-timing-function:cubic-bezier(.4,0,.2,1.35)}
+  80%{transform:translate(-.32%,-2.588%);animation-timing-function:cubic-bezier(.4,0,.2,1.35)}
+  86%,100%{transform:translate(0,0)}
+}
+@keyframes dt-led-d{0%,17%{opacity:1}20%,84%{opacity:0}87%,100%{opacity:1}}
+@keyframes dt-led-n{0%,22%{opacity:0}25%,30%{opacity:1}33%,78%{opacity:0}81%,83%{opacity:1}86%,100%{opacity:0}}
+@keyframes dt-led-r{0%,34%{opacity:0}37%,44%{opacity:1}47%,72%{opacity:0}75%,77%{opacity:1}80%,100%{opacity:0}}
+@keyframes dt-led-p{0%,48%{opacity:0}51%,68%{opacity:1}71%,100%{opacity:0}}
+.mobile-nav .logo-anim{height:32px}
+.footer-brand .logo-anim{height:40px}
+.logo-anim--big{height:auto;width:min(460px,100%);display:block;margin:0 auto 22px}
+@media(max-width:420px){.brand .logo-anim{height:31px}}
+@media(prefers-reduced-motion:reduce){.logo-anim .logo-lever,.logo-anim .led{animation:none}.logo-anim .led-d{opacity:1}}
