@@ -175,4 +175,52 @@
     });
     if (pendentes) document.documentElement.classList.add("js-reveal");
   }
+
+  // Números que contam sozinhos (12 anos, 4,9, 10x) quando aparecem na tela
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    var contar = function (el) {
+      var alvo = parseFloat(el.getAttribute("data-count")), dec = +(el.getAttribute("data-dec") || 0), t0 = null, dur = 1400;
+      var passo = function (t) {
+        if (!t0) t0 = t;
+        var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (alvo * e).toFixed(dec).replace(".", ",");
+        if (p < 1) requestAnimationFrame(passo);
+      };
+      requestAnimationFrame(passo);
+    };
+    var numIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { contar(en.target); numIo.unobserve(en.target); } });
+    }, { threshold: 0.6 });
+    document.querySelectorAll("[data-count]").forEach(function (el) { numIo.observe(el); });
+
+    // Passos "Como funciona" acendem um por vez
+    var passos = document.querySelectorAll(".step");
+    if (passos.length) {
+      var iPasso = 0, timer = null;
+      var stepIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && !timer) {
+            timer = setInterval(function () {
+              passos.forEach(function (s, k) { s.classList.toggle("is-lit", k === iPasso); });
+              iPasso = (iPasso + 1) % passos.length;
+            }, 1200);
+          } else if (!en.isIntersecting && timer) { clearInterval(timer); timer = null; }
+        });
+      }, { threshold: 0.3 });
+      stepIo.observe(passos[0].parentNode);
+    }
+
+    // Faixa de marcas em movimento contínuo
+    var marquee = document.querySelector(".brand-marquee");
+    if (marquee) {
+      var track = document.createElement("div");
+      track.className = "marquee-track";
+      while (marquee.firstChild) track.appendChild(marquee.firstChild);
+      Array.prototype.slice.call(track.children).forEach(function (c) {
+        var cl = c.cloneNode(true); cl.setAttribute("aria-hidden", "true"); track.appendChild(cl);
+      });
+      marquee.appendChild(track);
+      marquee.classList.add("is-moving");
+    }
+  }
 })();

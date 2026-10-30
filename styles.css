@@ -491,3 +491,49 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .js-reveal .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .js-reveal .reveal.is-in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.brand::after,.wa-float::before{animation:none}.js-reveal .reveal{opacity:1;transform:none;transition:none}.card{transition:none}}
+
+/* ---------- animações extras (out/2026) ---------- */
+/* 1. Abertura do topo: entra em sequência */
+@keyframes dt-rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes dt-fade{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.hero-anim .eyebrow,.hero-anim h1,.hero-anim .hero-lead,.hero-anim .hero-local,.hero-anim .hero-trust,.hero-anim .hero-cta,.hero-anim .hero-quote{animation:dt-rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero-anim h1{animation-delay:.08s}.hero-anim .hero-lead{animation-delay:.18s}.hero-anim .hero-local{animation-delay:.26s}
+.hero-anim .hero-trust{animation-delay:.32s}.hero-anim .hero-cta{animation-delay:.4s}.hero-anim .hero-quote{animation-delay:.5s}
+.hero-anim .hero-media{animation:dt-fade 1s cubic-bezier(.2,.7,.2,1) .2s both}
+.hero-anim .stat{animation:dt-rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero-anim .stat:nth-child(1){animation-delay:.55s}.hero-anim .stat:nth-child(2){animation-delay:.63s}.hero-anim .stat:nth-child(3){animation-delay:.71s}.hero-anim .stat:nth-child(4){animation-delay:.79s}
+/* 2. Fundo do topo respira devagar */
+@media(min-width:960px){.hero-anim{animation:dt-pan 22s ease-in-out infinite alternate}}
+@keyframes dt-pan{from{background-position:0 0,calc(50% + 420px) center}to{background-position:0 0,calc(50% + 380px) center}}
+/* 3. Brilho passando nos botões vermelhos */
+.btn-primary{position:relative;overflow:hidden;isolation:isolate}
+.btn-primary::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:-1;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:dt-sweep 5s ease-in-out 2s infinite}
+@keyframes dt-sweep{0%,80%{left:-60%}100%{left:130%}}
+/* 4. Ícones dos cards giram/pulsam ao passar o mouse */
+.card-icon{transition:transform .35s ease,background-color .35s ease}
+@media(hover:hover){.card:hover .card-icon{transform:rotate(-8deg) scale(1.12)}}
+.card-icon svg[aria-hidden] use[href="#i-gear"]{transform-origin:center}
+@media(hover:hover){.card:hover .card-icon use[href="#i-gear"]{animation:dt-spin 1.6s linear infinite}}
+@keyframes dt-spin{to{transform:rotate(360deg)}}
+/* 5. Traço vermelho cresce embaixo dos títulos ao aparecer */
+.section-head .section-title{position:relative;padding-bottom:14px}
+.section-head .section-title::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:56px;background:var(--red);border-radius:2px;transform-origin:left;transform:scaleX(1)}
+.section-head.center .section-title::after{left:50%;margin-left:-28px;transform-origin:center}
+.js-reveal .section-head.reveal .section-title::after{transform:scaleX(0);transition:transform .9s cubic-bezier(.2,.7,.2,1) .35s}
+.js-reveal .section-head.reveal.is-in .section-title::after{transform:scaleX(1)}
+/* 6. Passos do atendimento acendem em sequência */
+.step::before{transition:transform .4s ease,box-shadow .4s ease}
+.step.is-lit::before{transform:scale(1.12);box-shadow:0 0 0 6px rgba(227,19,42,.22)}
+/* 7. Faixa de marcas desliza sozinha */
+.brand-marquee.is-moving{flex-wrap:nowrap;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.brand-marquee.is-moving .marquee-track{display:flex;gap:10px;width:max-content;animation:dt-marquee 38s linear infinite}
+.brand-marquee.is-moving:hover .marquee-track{animation-play-state:paused}
+@keyframes dt-marquee{to{transform:translateX(calc(-50% - 5px))}}
+/* 8. Estrelas brilham uma após a outra */
+.rating-card .stars{background:linear-gradient(90deg,var(--red-light) 40%,#ffb3bd 50%,var(--red-light) 60%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:dt-stars 4s linear infinite}
+@keyframes dt-stars{from{background-position:100% 0}to{background-position:-100% 0}}
+@media(prefers-reduced-motion:reduce){
+  .hero-anim,.hero-anim *,.btn-primary::after,.rating-card .stars,.brand-marquee .marquee-track{animation:none!important}
+  .step::before,.card-icon{transition:none}
+  .rating-card .stars{color:var(--red-light);background:none}
+}
