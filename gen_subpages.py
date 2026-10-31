@@ -247,6 +247,15 @@ ALL_PAGES = {
     "sinais": {"name": "câmbio automático", "slug": "sinais-de-problema-no-cambio-automatico", "label": "Sinais de problema no câmbio automático"},
 }
 
+# Artigos de sintomas (gen_artigos.py)
+ALL_PAGES.update({
+    "art-patinando": {"name": "câmbio automático", "slug": "cambio-automatico-patinando", "label": "Câmbio automático patinando"},
+    "art-tranco": {"name": "câmbio automático", "slug": "cambio-automatico-dando-tranco", "label": "Câmbio automático dando tranco"},
+    "art-cvt": {"name": "CVT", "slug": "cambio-cvt-perdendo-forca", "label": "CVT patinando ou perdendo força"},
+    "art-powershift": {"name": "PowerShift", "slug": "powershift-trepidando", "label": "PowerShift trepidando"},
+    "art-neutro": {"name": "automatizado", "slug": "cambio-automatizado-caindo-em-neutro", "label": "Automatizado caindo em neutro"},
+})
+
 def label(v):
     return v.get("label", f"Câmbio {v['name']}")
 
@@ -292,7 +301,7 @@ def breadcrumb_schema(name, url):
     }
 
 def build_page(key, title, description, h1, lead, eyebrow, body_html, faq_items, wa_msg,
-                hero_img, hero_img_alt, hero_img_w, hero_img_h, kind="service", final_q=None, cta_text=None):
+                hero_img, hero_img_alt, hero_img_w, hero_img_h, kind="service", final_q=None, cta_text=None, date_published="2026-10-25"):
     info = ALL_PAGES[key]
     ex = EXTRA.get(key, {})
     title = ex.get("title", title)
@@ -320,7 +329,7 @@ def build_page(key, title, description, h1, lead, eyebrow, body_html, faq_items,
             "headline": h1, "description": description, "inLanguage": "pt-BR",
             "author": {"@type": "Organization", "name": "DT28 Câmbios Automáticos"},
             "publisher": PROVIDER, "mainEntityOfPage": canonical,
-            "datePublished": "2026-10-25", "dateModified": "2026-10-30",
+            "datePublished": date_published, "dateModified": max(date_published, "2026-10-30"),
             "image": "https://www.dt28cambioautomaticos.com.br" + hero_img
         }
     ]
@@ -614,4 +623,5 @@ build_page(
 )
 
 exec(open(os.path.join(BUILD, "gen_pages_novas.py"), encoding="utf-8").read())
+exec(open(os.path.join(BUILD, "gen_artigos.py"), encoding="utf-8").read())
 print("done")
