@@ -353,7 +353,7 @@ def build_page(key, title, description, h1, lead, eyebrow, body_html, faq_items,
 build_page(
     key="dualogic",
     title="Câmbio Dualogic em Sarandi e Maringá | DT28",
-    description="Dualogic com luz da engrenagem acesa ou sem engatar? Reparo de atuador, bomba e embreagem no Palio, Punto e Strada, com garantia por escrito. Fale com a DT28.",
+    description="Dualogic desengatando ou indo para o neutro sozinho? Reparo de atuador, bomba e embreagem no Palio, Punto e Strada, com garantia por escrito. Fale com a DT28.",
     h1="Câmbio Dualogic em Sarandi e Maringá",
     lead="A DT28 Câmbios Automáticos é referência regional em diagnóstico, manutenção e reparo de transmissões Dualogic.",
     eyebrow="Especialista em Dualogic",
@@ -403,7 +403,7 @@ build_page(
 build_page(
     key="imotion",
     title="Câmbio I-MOTION em Sarandi e Maringá | DT28",
-    description="I-Motion travando, sem engatar ou dando tranco? Especialistas em Gol, Fox, Up e Voyage. Diagnóstico eletrônico e garantia por escrito. Fale com a DT28.",
+    description="I-Motion desengatando ou indo para o neutro sozinho? Especialistas em Gol, Fox, Up e Voyage. Diagnóstico eletrônico e garantia por escrito. Fale com a DT28.",
     h1="Câmbio I-MOTION em Sarandi e Maringá",
     lead="A DT28 Câmbios Automáticos é referência regional em diagnóstico, manutenção e reparo de transmissões I-MOTION.",
     eyebrow="Especialista em I-MOTION",
@@ -453,7 +453,7 @@ build_page(
 build_page(
     key="automatizado",
     title="Câmbio Automatizado em Sarandi e Maringá | DT28",
-    description="Dualogic, I-Motion ou Easytronic dando tranco ou com luz acesa? Diagnóstico eletrônico e reparo com garantia por escrito. Orçamento no WhatsApp.",
+    description="Dualogic, I-Motion ou Easytronic desengatando ou indo para o neutro sozinho? Diagnóstico eletrônico e reparo com garantia por escrito. Fale com a DT28.",
     h1="Câmbio Automatizado em Sarandi e Maringá",
     lead="Trabalhamos com diagnóstico, manutenção e reparo de sistemas de câmbio automatizado, com destaque para Dualogic e I-MOTION.",
     eyebrow="Câmbio automatizado",
@@ -566,7 +566,7 @@ build_page(
 build_page(
     key="cvt",
     title="Manutenção de Câmbio CVT em Sarandi e Maringá | DT28",
-    description="Especialistas em câmbio CVT de Honda, Nissan, Toyota e Renault: correia, polias, corpo de válvulas e troca de óleo por diálise. Orçamento no WhatsApp.",
+    description="Câmbio CVT patinando ou perdendo aceleração? Especialistas em Honda, Nissan, Toyota e Renault: correia, polias, corpo de válvulas e óleo por diálise.",
     h1="Câmbio CVT em Sarandi e Maringá",
     lead="Trabalhamos com diagnóstico e manutenção de transmissões CVT, da correia ao corpo de válvulas.",
     eyebrow="Especialista em CVT",
