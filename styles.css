@@ -417,16 +417,21 @@ body{padding-bottom:0}
   *{transition-duration:.001ms !important;animation-duration:.001ms !important}
 }
 
-/* hero banner background (overlay 20%) */
+/* fundo do topo: alavanca de câmbio automático, esmaecida (out/2026) */
 .hero{
   background:
-    linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),
-    url("/img/hero-banner-sm.webp") left center/cover no-repeat;
+    radial-gradient(ellipse 60% 40% at 65% 45%,rgba(227,19,42,.12),transparent 70%),
+    radial-gradient(ellipse 85% 70% at 60% 40%,transparent 30%,rgba(5,5,5,.85) 100%) left top/100% 900px no-repeat,
+    linear-gradient(180deg,rgba(5,5,5,.74) 0%,rgba(5,5,5,.72) 40%,rgba(5,5,5,.85) 70%,#050505 100%) left top/100% 900px no-repeat,
+    url("https://images.unsplash.com/photo-1769254872789-57a420178849?w=2400&q=80&auto=format") -170px top/auto 900px no-repeat,
+    #050505;
 }
-@media(min-width:960px){.hero{
+@media(min-width:600px){.hero{
   background:
-    linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),
-    url("/img/hero-banner.webp") calc(50% + 420px) center/auto 100% no-repeat,
+    radial-gradient(ellipse 60% 40% at 65% 45%,rgba(227,19,42,.12),transparent 70%),
+    radial-gradient(ellipse 85% 70% at 60% 40%,transparent 30%,rgba(5,5,5,.85) 100%),
+    linear-gradient(180deg,rgba(5,5,5,.72) 0%,rgba(5,5,5,.78) 50%,#050505 80%),
+    url("https://images.unsplash.com/photo-1769254872789-57a420178849?w=2400&q=80&auto=format") center top/100% auto no-repeat,
     #050505;
 }}
 .hero h1,.hero .hero-lead,.hero .hero-trust{text-shadow:0 2px 14px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.6)}
@@ -503,7 +508,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .hero-anim .stat{animation:dt-rise .7s cubic-bezier(.2,.7,.2,1) both}
 .hero-anim .stat:nth-child(1){animation-delay:.55s}.hero-anim .stat:nth-child(2){animation-delay:.63s}.hero-anim .stat:nth-child(3){animation-delay:.71s}.hero-anim .stat:nth-child(4){animation-delay:.79s}
 /* 2. Fundo do topo respira devagar */
-@media(min-width:960px){.hero-anim{animation:dt-pan 22s ease-in-out infinite alternate}}
+/* fundo do topo parado (o pan antigo foi removido com o novo fundo) */
 @keyframes dt-pan{from{background-position:0 0,calc(50% + 420px) center}to{background-position:0 0,calc(50% + 380px) center}}
 /* 3. Brilho passando nos botões vermelhos */
 .btn-primary{position:relative;overflow:hidden;isolation:isolate}
