@@ -15,7 +15,7 @@ EXTRA = {
 
 # ---------------------------------------------------------------
 "dualogic": {
-    "title": "Câmbio Dualogic Palio e Strada em Sarandi e Maringá | DT28",
+    "title": "Câmbio Dualogic Caindo em Neutro? Sarandi e Maringá | DT28",
     "h1": "Conserto e manutenção de câmbio Dualogic em Sarandi e Maringá",
     "body": """
         <h2>Carros que usam o câmbio Dualogic</h2>
@@ -47,7 +47,7 @@ EXTRA = {
 
 # ---------------------------------------------------------------
 "imotion": {
-    "title": "Câmbio I-Motion Gol, Fox e Up em Sarandi e Maringá | DT28",
+    "title": "Câmbio I-Motion Caindo em Neutro? Sarandi e Maringá | DT28",
     "h1": "Conserto e manutenção de câmbio I-MOTION em Sarandi e Maringá",
     "body": """
         <h2>Carros que usam o câmbio I-MOTION</h2>
@@ -79,7 +79,7 @@ EXTRA = {
 
 # ---------------------------------------------------------------
 "automatizado": {
-    "title": "Câmbio Automatizado com Tranco? Sarandi e Maringá | DT28",
+    "title": "Câmbio Automatizado Caindo em Neutro? Sarandi e Maringá | DT28",
     "h1": "Conserto de câmbio automatizado em Sarandi e Maringá",
     "body": """
         <h2>Sistemas automatizados atendidos</h2>
@@ -138,7 +138,7 @@ EXTRA = {
 
 # ---------------------------------------------------------------
 "cvt": {
-    "title": "Câmbio CVT Patinando? Conserto em Sarandi e Maringá | DT28",
+    "title": "Câmbio CVT Patinando ou Perdendo Aceleração? Sarandi e Maringá | DT28",
     "h1": "Especialista em câmbio CVT em Sarandi e Maringá",
     "body": """
         <h2>Carros que usam câmbio CVT</h2>
@@ -171,7 +171,7 @@ EXTRA = {
 
 # ---------------------------------------------------------------
 "powershift": {
-    "title": "Câmbio PowerShift Focus e EcoSport em Sarandi e Maringá | DT28",
+    "title": "PowerShift com Tranco ou Patinando? Sarandi e Maringá | DT28",
     "h1": "Manutenção de câmbio PowerShift em Sarandi e Maringá",
     "body": """
         <h2>Carros que usam câmbio PowerShift</h2>
