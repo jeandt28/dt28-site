@@ -119,7 +119,7 @@ build_page(
     faq_items=[
         ("Tranco no câmbio automático é normal?", "Não. Um câmbio em bom estado troca as marchas de forma suave. O tranco indica que a transmissão precisa ser avaliada."),
         ("Trocar o óleo tira o tranco?", "Depende da causa. Quando o problema é o fluido, a troca pode ajudar. Se houver falha no corpo de válvulas, solenoide ou embreagens, é preciso fazer o reparo."),
-        ("Quanto tempo leva o diagnóstico?", "Depende do caso. Agende pelo WhatsApp (44) 99803-4786, com antecedência mínima de 3 dias, para a equipe avaliar o veículo."),
+        ("Quanto tempo leva o diagnóstico?", "O diagnóstico leva de 3 a 5 dias. Agende pelo WhatsApp (44) 99803-4786 para a equipe avaliar o veículo."),
     ],
     hero_img="/img/oficina-interior.webp",
     hero_img_alt="Interior da oficina DT28 Câmbios Automáticos com veículos em atendimento",
