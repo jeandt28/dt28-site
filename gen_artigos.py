@@ -180,7 +180,7 @@ build_page(
     faq_items=[
         ("CVT patinando tem conserto?", "Na maioria dos casos, sim. O tipo de reparo depende da causa, que é confirmada no diagnóstico."),
         ("Zumbido no CVT é normal?", "Um ruído leve pode ser característico de alguns modelos. Um zumbido que aumenta com o tempo ou com a velocidade merece avaliação."),
-        ("Vocês trocam o óleo do CVT?", "Sim, com o fluido específico para a aplicação e por diálise quando indicada. As trocas de fluido podem ser parceladas em até 10x sem juros no cartão."),
+        ("Vocês trocam o óleo do CVT?", "Sim, com o fluido específico para a aplicação e por diálise quando indicada. As trocas de fluido podem ser parceladas em até 12x sem juros no cartão."),
     ],
     hero_img="/img/componente-cvt.webp",
     hero_img_alt="Unidade de câmbio CVT na bancada da DT28 Câmbios Automáticos",
