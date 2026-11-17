@@ -194,7 +194,7 @@ build_page(
     faq_items=[
         ("Posso continuar rodando com o câmbio dando tranco?", "Não é recomendado continuar rodando sem saber a causa. Dependendo do problema, o uso pode aumentar o dano. O ideal é agendar uma avaliação."),
         ("Um sintoma já indica qual peça está com defeito?", "Não. O mesmo sintoma pode ter causas diferentes. Só o diagnóstico técnico confirma a origem do problema."),
-        ("Como agendar uma avaliação na DT28?", "Pelo WhatsApp (44) 99803-4786, com antecedência mínima de 3 dias, sujeito à aprovação do especialista."),
+        ("Como agendar uma avaliação na DT28?", "Pelo WhatsApp (44) 99803-4786, sujeito à aprovação do especialista."),
     ],
     hero_img="/img/diagnostico-eletronico.webp",
     hero_img_alt="Oficina da DT28 Câmbios Automáticos em Sarandi com caminhonete e carros nos elevadores",
