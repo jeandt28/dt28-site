@@ -8,7 +8,7 @@
 build_page(
     key="diálise",
     title="Troca de Óleo do Câmbio por Diálise em Sarandi | DT28",
-    description="Troca de fluido do câmbio automático por diálise, com teste do fluido Autool, em Sarandi, atendendo Maringá e região. Até 10x sem juros no cartão.",
+    description="Troca de fluido do câmbio automático por diálise, com teste do fluido Autool, em Sarandi, atendendo Maringá e região. Até 12x sem juros no cartão.",
     h1="Troca de óleo de câmbio automático por diálise em Sarandi",
     lead="Renovação do fluido da transmissão com equipamento de diálise, quando tecnicamente indicada, e teste do fluido com equipamento Autool.",
     eyebrow="Troca de fluido",
@@ -37,13 +37,13 @@ build_page(
         <p>Quando o câmbio já apresenta defeito, como trancos fortes, patinação ou modo de emergência, a troca de óleo sozinha pode não resolver. Nesses casos, o primeiro passo é o <a href="/#servicos">diagnóstico especializado</a>, para encontrar a causa antes de qualquer serviço. Veja também os <a href="/sinais-de-problema-no-cambio-automatico">sinais de problema no câmbio automático</a>.</p>
 
         <h2>Pagamento</h2>
-        <p>As trocas de fluido podem ser parceladas em até 10x sem juros no cartão de crédito. Também aceitamos dinheiro, Pix e cartão de débito.</p>
+        <p>As trocas de fluido podem ser parceladas em até 12x sem juros no cartão de crédito. Também aceitamos dinheiro, Pix e cartão de débito.</p>
     """,
     faq_items=[
         ("A troca por diálise serve para todo câmbio automático?", "A diálise é usada conforme a aplicação e a especificação de cada transmissão. Envie o modelo e o ano do veículo pelo WhatsApp para confirmarmos o procedimento indicado."),
         ("Qual fluido é usado na troca?", "Usamos o fluido indicado para a especificação da transmissão do seu veículo."),
         ("Trocar o óleo resolve tranco no câmbio?", "Nem sempre. Se o câmbio já apresenta sintomas, é preciso diagnosticar a causa. A troca de fluido é manutenção e não substitui o reparo de um componente com defeito."),
-        ("Posso parcelar a troca de óleo do câmbio?", "Sim. As trocas de fluido podem ser parceladas em até 10x sem juros no cartão de crédito."),
+        ("Posso parcelar a troca de óleo do câmbio?", "Sim. As trocas de fluido podem ser parceladas em até 12x sem juros no cartão de crédito."),
     ],
     hero_img="/img/teste-fluido-atf.webp",
     hero_img_alt="Teste de vida útil do fluido ATF com equipamento Autool na DT28 Câmbios Automáticos",
