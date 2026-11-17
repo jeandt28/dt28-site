@@ -94,7 +94,7 @@ EXTRA = {
         <p>A DT28 faz as duas coisas. O reparo mantém o conforto do câmbio sem pedal de embreagem. A conversão para manual é uma alternativa para quem prefere esse tipo de condução. A decisão é sua, depois do diagnóstico e de entender os custos de cada caminho.</p>
 
         <h2>Como funciona o atendimento</h2>
-        <p>O pré-diagnóstico é gratuito. Depois, fazemos o diagnóstico eletrônico, passamos o orçamento e só começamos o serviço com a sua aprovação. O agendamento é feito pelo WhatsApp, com no mínimo 3 dias de antecedência. Atendemos clientes de Sarandi, Maringá, Paiçandu, Marialva e região.</p>
+        <p>O pré-diagnóstico é gratuito. Depois, fazemos o diagnóstico eletrônico, passamos o orçamento e só começamos o serviço com a sua aprovação. O agendamento é feito pelo WhatsApp e está sujeito à aprovação do especialista. Atendemos clientes de Sarandi, Maringá, Paiçandu, Marialva e região.</p>
     """,
     "faq": [
         ("Vocês fazem conversão de câmbio automatizado para manual?", "Sim. A DT28 converte câmbios Dualogic, I-MOTION e EASYTRONIC para manual. Envie o modelo e o ano pelo WhatsApp para avaliarmos."),
